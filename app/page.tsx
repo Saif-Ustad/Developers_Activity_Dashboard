@@ -4,7 +4,7 @@ import Image from "next/image"
 
 import RadarChart from "../components/RadarChart"
 import BarGraph from "../components/BarGraph"
-import LineChart from "../components/LineChart"
+// import LineChart from "../components/LineChart"
 import ActivityCard from "../components/ActivityCard"
 import TotalActivityCard from "../components/TotalActivityCard"
 
@@ -27,18 +27,18 @@ function page() {
   }
 
 
+  //State Variables
   const [activeChart, setActiveChart] = useState("barChart");
-
   const [activityData, setActivityData] = useState<ActivityData | null>(null);
   const [activeDays, setActiveDays] = useState(0);
   const [totalActiveDays, setTotalActiveDays] = useState(1);
-
   const [developers, setDevelopers] = useState<string[]>([]);
   const [selectedDeveloper, setSelectedDeveloper] = useState<string>('All Developers');
   const [dates, setDates] = useState<string[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>('All Dates');
   const [data, setData] = useState<any>(null); // Store the fetched data
 
+  //fetch the api data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,10 +46,21 @@ function page() {
         const fetchedData = response.data.data;
 
         const developerNames = ['All Developers', ...fetchedData.AuthorWorklog.rows.map((row: any) => row.name)];
-        const dateLabels = ['All Dates', ...new Set(fetchedData.AuthorWorklog.rows.flatMap((row: any) => row.dayWiseActivity.map((day: any) => day.date)))];
+        const dateSet: { [key: string]: boolean } = {};
+        fetchedData.AuthorWorklog.rows.forEach((row: any) => {
+          row.dayWiseActivity.forEach((day: any) => {
+            dateSet[day.date] = true;
+          });
+        });
+
+        const dateLabels = ['All Dates', ...Object.keys(dateSet)];
+
+        setDates(dateLabels);
+
 
         setDevelopers(developerNames);
         setDates(dateLabels);
+
 
         // Set default selections
         setSelectedDeveloper('All Developers');
@@ -148,8 +159,6 @@ function page() {
   };
 
 
-  // console.log(activityData);
-
   const handleDeveloperChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newDeveloper = event.target.value;
     setSelectedDeveloper(newDeveloper);
@@ -168,10 +177,6 @@ function page() {
   };
 
 
-  const fetchData = () => {
-    const rows = data.AuthorWorklog
-  }
-
   return (
     <div className="container">
 
@@ -189,8 +194,7 @@ function page() {
         <h2 className="my-[15px] font-medium text-[16px]">Total Activities Done</h2>
 
         {/* <div className="flex gap-[20px] justify-between"> */}
-
-        <TotalActivityCard data={activityData}/>
+        <TotalActivityCard data={activityData} />
         {/* </div> */}
 
 
@@ -208,9 +212,6 @@ function page() {
                   <option key={developer} value={developer}>{developer}</option>
                 ))}
               </select>
-
-
-
             </div>
 
             <div className="bg-white shadow-md p-[20px] flex justify-between gap-[20px]">
@@ -222,8 +223,6 @@ function page() {
                   <option key={date} value={date}>{date}</option>
                 ))}
               </select>
-
-
 
             </div>
 
@@ -277,17 +276,16 @@ function page() {
             </div>
 
             {/* <div className="w-[60%] grid grid-cols-3 gap-[20px]"> */}
-
-            <ActivityCard data={activityData}/>
-
+            <ActivityCard data={activityData} />
             {/* </div> */}
+
           </div>
 
-          <div className="bg-white rounded-[10px] py-[20px]">
+          {/* <div className="bg-white rounded-[10px] py-[20px]">
             <div className="w-full h-[350px]" >
-              <LineChart data={activityData}/>
+              <LineChart data={activityData} />
             </div>
-          </div>
+          </div> */}
 
         </div>
 

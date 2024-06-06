@@ -29,9 +29,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[0].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[0].developer_count, data.CombineData[0].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[0].developer_count, data.CombineData[0].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[0].developer_count, data.CombineData[0].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[0].developer_count, data.CombineData[0].total_count)}%
             </span>
           </div>
@@ -45,9 +45,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[1].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[1].developer_count, data.CombineData[1].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[1].developer_count, data.CombineData[1].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[1].developer_count, data.CombineData[1].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[1].developer_count, data.CombineData[1].total_count)}%
             </span>
           </div>
@@ -61,9 +61,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[2].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[2].developer_count, data.CombineData[2].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[2].developer_count, data.CombineData[2].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[2].developer_count, data.CombineData[2].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[2].developer_count, data.CombineData[2].total_count)}%
             </span>
           </div>
@@ -77,9 +77,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[3].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[3].developer_count, data.CombineData[3].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[3].developer_count, data.CombineData[3].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[3].developer_count, data.CombineData[3].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[3].developer_count, data.CombineData[3].total_count)}%
             </span>
           </div>
@@ -93,9 +93,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[4].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[4].developer_count, data.CombineData[4].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[4].developer_count, data.CombineData[4].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[4].developer_count, data.CombineData[4].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[4].developer_count, data.CombineData[4].total_count)}%
             </span>
           </div>
@@ -109,9 +109,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[5].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[5].developer_count, data.CombineData[5].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[5].developer_count, data.CombineData[5].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[5].developer_count, data.CombineData[5].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[5].developer_count, data.CombineData[5].total_count)}%
             </span>
           </div>
@@ -125,9 +125,9 @@ const ActivityCard = ({ data }) => {
         </div>
         <div className="flex flex-col items-end">
           <h2 className="text-[30px] font-bold">{data?.chartData[6].count}</h2>
-          <div className="flex items-center">
+          <div className={`flex items-center font-semibold ${getTextColor(calculatePercentage(data?.CombineData[6].developer_count, data.CombineData[6].total_count))}`}>
             {renderArrow(calculatePercentage(data?.CombineData[6].developer_count, data.CombineData[6].total_count))}
-            <span className={`font-semibold ${getTextColor(calculatePercentage(data?.CombineData[6].developer_count, data.CombineData[6].total_count))}`}>
+            <span className="font-semibold">
               {calculatePercentage(data?.CombineData[6].developer_count, data.CombineData[6].total_count)}%
             </span>
           </div>
