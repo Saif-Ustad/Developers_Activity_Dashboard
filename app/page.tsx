@@ -1,113 +1,137 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Image from "next/image"
+
+import RadarChart from "../components/RadarChart"
+import BarGraph from "../components/BarGraph"
+import LineChart from "../components/LineChart"
+import ActivityCard from "../components/ActivityCard"
+import TotalActivityCard from "../components/TotalActivityCard"
+
+import Metrics_Logo from "../public/metrics_logo.png"
+import { useState } from "react"
+
+
+function page() {
+
+  const [activeChart, setActiveChart] = useState("barChart");
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="container">
+
+      <div className="px-[20px]">
+        <div className="flex gap-[20px] bg-white p-[15px] mt-[20px] shadow-md  rounded-[15px]">
+          <div>
+            <Image src={Metrics_Logo} alt="Metrics_logo" width={40} height={40} />
+          </div>
+          <div>
+            <h2 className="font-bold">DEVELOPER DASHBOARD</h2>
+            <p className="text-[12px] text-[#6b7177]">Developer Performance Metrics</p>
+          </div>
         </div>
+
+        <h2 className="my-[15px] font-medium text-[16px]">Total Activities Done</h2>
+
+        {/* <div className="flex gap-[20px] justify-between"> */}
+
+        <TotalActivityCard />
+        {/* </div> */}
+
+
+        <div className="bg-  my-[30px] rounded-[10px] ">
+
+          <h2 className="font-medium text-[16px]">Indivisual Developer Activities</h2>
+
+          <div className="flex justify-center gap-[100px]">
+            <div className="bg-white shadow-md p-[20px] flex justify-between gap-[20px]">
+              <label className="font-medium">
+                Select Developer:
+              </label>
+              <select className="outline-none px-[10px] ">
+                <option>Rishi</option>
+                <option>Ritik</option>
+                <option>Avijit</option>
+                <option>Arvind</option>
+              </select>
+
+            </div>
+
+            <div className="bg-white shadow-md p-[20px] flex justify-between gap-[20px]">
+              <label className="font-medium">
+                Select Date:
+              </label>
+              <select className="outline-none px-[10px]">
+                <option >All Dates</option>
+                <option >12-05-2024</option>
+                <option >13-05-2024</option>
+                <option >14-05-2024</option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div className="my-[50px] flex gap-[20px]">
+
+            <div className="bg-white rounded-[10px] w-[45%] shadow-md p-[15px]">
+              <h3 className="font-semibold ">Rishi Gupta</h3>
+
+              <div className="flex justify-between text-[20px] text-gray-700 font-semibold my-[10px]">
+                <h2 className="">Total Active Days</h2>
+                <span>7</span>
+              </div>
+
+              <div className="bg-gray-300 w-full h-[15px] rounded-full">
+                <div className="w-1/2 bg-[#1e90ff] h-[15px] rounded-full"></div>
+              </div>
+
+              <div className="my-[20px] flex gap-[20px] text-[#6b7177]">
+                <span
+                  className={`cursor-pointer ${activeChart === 'barChart' ? 'text-black' : 'text-[#6b7177]'}`}
+                  onClick={() => setActiveChart("barChart")}
+                >
+                  Bar Graph
+                </span>
+                <span
+                  className={`cursor-pointer ${activeChart === 'radarChart' ? 'text-black' : 'text-[#6b7177]'}`}
+                  onClick={() => setActiveChart("radarChart")}
+                >
+                  Radar Chart
+                </span>
+              </div>
+
+
+              <div className="w-full h-[350px]" >
+                {activeChart == "barChart" ? (
+                  <BarGraph />
+                ) : (
+                  <RadarChart />
+                )}
+
+
+              </div>
+
+
+            </div>
+
+            {/* <div className="w-[60%] grid grid-cols-3 gap-[20px]"> */}
+
+            <ActivityCard />
+
+            {/* </div> */}
+          </div>
+
+          <div className="bg-white rounded-[10px] py-[20px]">
+            <div className="w-full h-[350px]" >
+              <LineChart />
+            </div>
+          </div>
+
+        </div>
+
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    </div>
+  )
 }
+
+export default page
