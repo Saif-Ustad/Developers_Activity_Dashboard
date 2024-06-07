@@ -8,87 +8,87 @@ import Resolved_Icon from "../public/Resolved.png"
 
 import Image from "next/image"
 
-const TotalActivityCard = ({data}) => {
+const TotalActivityCard = ({ data }) => {
 
   // console.log(data?.CombineData[0].total_count);
   if (!data) {
     return <div>Loading...</div>;
   }
-  
+
   return (
-    
-    <div className="flex gap-[20px] justify-between">
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">PR Open</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[0].total_count}</h2>
-      </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={PR_Open} alt="PR_Open" className="icon" height={20} width={20} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">PR Merged</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[1].total_count}</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-[20px] justify-between">
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">PR Open</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[0].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={PR_Open} alt="PR_Open" className="icon" height={20} width={20} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={PR_Merged} alt="PR_Merged" className="icon" height={25} width={25} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">Commits</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[2].total_count}</h2>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">PR Merged</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[1].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={PR_Merged} alt="PR_Merged" className="icon" height={25} width={25} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={Commites_Icon} alt="Commits" className="icon" height={35} width={35} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">PR Reviewed</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[3].total_count}</h2>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">Commits</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[2].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={Commites_Icon} alt="Commits" className="icon" height={35} width={35} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={PR_Reviewed} alt="PR_Reviewed" className="icon" height={25} width={25} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">PR Comments</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[4].total_count}</h2>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">PR Reviewed</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[3].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={PR_Reviewed} alt="PR_Reviewed" className="icon" height={25} width={25} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={PR_Comments} alt="PR_Comments" className="icon" height={25} width={25} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">Incident Alerts</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[5].total_count}</h2>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">PR Comments</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[4].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={PR_Comments} alt="PR_Comments" className="icon" height={25} width={25} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={Alert_Icon} alt="Alerts" className="icon" height={20} width={20} />
-      </div>
-    </div>
 
-    <div className="shadow-md p-[15px] w-[180px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
-      <div>
-        <p className="text-[14px] text-[#6b7177]">Incident Resolved</p>
-        <h2 className="text-[20px] font-bold">{data?.CombineData[6].total_count}</h2>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">Incident Alerts</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[5].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={Alert_Icon} alt="Alerts" className="icon" height={20} width={20} />
+        </div>
       </div>
-      <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
-        <Image src={Resolved_Icon} alt="Resolved" className="icon" height={25} width={25} />
-      </div>
-    </div>
 
-  </div>
+      <div className="shadow-md p-[15px] w-full  rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
+        <div>
+          <p className="text-[14px] text-[#6b7177]">Incident Resolved</p>
+          <h2 className="text-[20px] font-bold">{data?.CombineData[6].total_count}</h2>
+        </div>
+        <div className="bg-[#1e90ff] flex items-center justify-center rounded-[10px] w-[40px] h-[40px]">
+          <Image src={Resolved_Icon} alt="Resolved" className="icon" height={25} width={25} />
+        </div>
+      </div>
+
+    </div>
   )
 }
 

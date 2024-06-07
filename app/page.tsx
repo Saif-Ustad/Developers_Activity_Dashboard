@@ -179,58 +179,71 @@ function page() {
 
   return (
     <div className="container">
-
       <div className="px-[20px]">
+
+
+        {/* Dashboard heading */}
+
         <div className="flex gap-[20px] bg-white p-[15px] mt-[20px] shadow-md  rounded-[15px]">
           <div>
             <Image src={Metrics_Logo} alt="Metrics_logo" width={40} height={40} />
           </div>
+
           <div>
             <h2 className="font-bold">DEVELOPER DASHBOARD</h2>
             <p className="text-[12px] text-[#6b7177]">Developer Performance Metrics</p>
           </div>
         </div>
 
+
+
+
+        {/* total Activites cards */}
+
         <h2 className="my-[15px] font-medium text-[16px]">Total Activities Done</h2>
 
-        {/* <div className="flex gap-[20px] justify-between"> */}
         <TotalActivityCard data={activityData} />
-        {/* </div> */}
 
 
-        <div className="bg-  my-[30px] rounded-[10px] ">
+        {/* Invisual Developer Activities */}
 
-          <h2 className="font-medium text-[16px]">Indivisual Developer Activities</h2>
+        <div className=" my-[30px] rounded-[10px] ">
 
-          <div className="flex justify-center gap-[100px]">
-            <div className="bg-white shadow-md p-[20px] flex justify-between gap-[20px]">
+          <h2 className="my-[20px] font-medium text-[16px]">Indivisual Developer Activities</h2>
+
+
+          {/* filters */}
+
+          <div className="flex flex-col md:flex-row  justify-center gap-[40px] lg:gap-[100px]">
+            <div className="bg-white shadow-md p-[20px] flex flex-col sm:flex-row justify-between gap-[10px] sm:gap-[20px]">
               <label className="font-medium">
                 Select Developer:
               </label>
-              <select className="outline-none px-[10px] " value={selectedDeveloper} onChange={handleDeveloperChange}>
+              <select className="outline-none sm:px-[10px] " value={selectedDeveloper} onChange={handleDeveloperChange}>
                 {developers.map((developer) => (
                   <option key={developer} value={developer}>{developer}</option>
                 ))}
               </select>
             </div>
 
-            <div className="bg-white shadow-md p-[20px] flex justify-between gap-[20px]">
+            <div className="bg-white shadow-md p-[20px] flex flex-col sm:flex-row justify-between gap-[10px] sm:gap-[20px]">
               <label className="font-medium">
                 Select Date:
               </label>
-              <select className="outline-none px-[10px]" value={selectedDate} onChange={handleDateChange}>
+              <select className="outline-none sm:px-[10px]" value={selectedDate} onChange={handleDateChange}>
                 {dates.map((date) => (
                   <option key={date} value={date}>{date}</option>
                 ))}
               </select>
-
             </div>
-
           </div>
 
-          <div className="my-[50px] flex gap-[20px]">
 
-            <div className="bg-white rounded-[10px] w-[45%] shadow-md p-[15px]">
+          
+          <div className="my-[50px] flex flex-col lg:flex-row gap-[20px]">
+            
+            {/* left Part */}
+            <div className="bg-white rounded-[10px] lg:w-[45%] shadow-md p-[15px]">
               <h3 className="font-semibold ">{selectedDeveloper}</h3>
 
               <div className="flex justify-between text-[20px] text-gray-700 font-semibold my-[10px]">
@@ -268,16 +281,13 @@ function page() {
                 ) : (
                   <RadarChart data={activityData} />
                 )}
-
-
               </div>
-
 
             </div>
 
-            {/* <div className="w-[60%] grid grid-cols-3 gap-[20px]"> */}
+            {/* right part */}
+
             <ActivityCard data={activityData} />
-            {/* </div> */}
 
           </div>
 
@@ -288,7 +298,6 @@ function page() {
           </div> */}
 
         </div>
-
       </div>
     </div>
   )

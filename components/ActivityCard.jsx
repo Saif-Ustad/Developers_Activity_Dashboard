@@ -21,7 +21,7 @@ const ActivityCard = ({ data }) => {
   };
 
   return (
-    <div className="w-[60%] grid grid-cols-3 gap-[20px]">
+    <div className="lg:w-[60%] grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 gap-[20px]">
       <div className="shadow-md p-[15px] rounded-[10px] bg-white flex items-center justify-between gap-[30px]">
         <div>
           <p className="text-[14px] font-semibold mb-[5px]">Pull Request Open</p>
