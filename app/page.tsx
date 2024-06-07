@@ -42,7 +42,7 @@ function page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/data');
+        const response = await axios.get('https://developers-activity-dashboard-api.vercel.app/api/data');
         const fetchedData = response.data.data;
 
         const developerNames = ['All Developers', ...fetchedData.AuthorWorklog.rows.map((row: any) => row.name)];
